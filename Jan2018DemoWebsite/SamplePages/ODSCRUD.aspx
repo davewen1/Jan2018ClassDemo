@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ODSCRUD.aspx.cs" Inherits="Jan2018DemoWebsite.SamplePages.ODSCRUD" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>ODS CRUD of Albums</h1>
+    <h1>ODS CRUD of AlbumSSSS</h1>
 
     <asp:ListView ID="ListView1" runat="server" DataSourceID="AlbumCRUDODS" InsertItemPosition="LastItem" DataKeyNames="AlbumId">
         <AlternatingItemTemplate>
