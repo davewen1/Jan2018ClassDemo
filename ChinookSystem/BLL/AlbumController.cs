@@ -42,7 +42,7 @@ namespace ChinookSystem.BLL
                 context.Albums.Add(item);
                 //physically cause the staged item to be placed on the datase
                 //this is the commit of using transaction.
-                //durign the save changes, does the validation s in Tracks.cs Before we sending it to the SQL. This prevent useless data from going to the database-> prevent slowing down the website
+                //durign the save changes, does the validations in Tracks.cs Before we sending it to the SQL. This prevent useless data from going to the database-> prevent slowing down the website
                 context.SaveChanges();
             }
         }
@@ -54,8 +54,7 @@ namespace ChinookSystem.BLL
             {
                 item.ReleaseLabel = string.IsNullOrEmpty(item.ReleaseLabel) ? null : item.ReleaseLabel;
 
-                context.Entry(item).State =
-                    System.Data.Entity.EntityState.Modified;                
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;                
                 context.SaveChanges();
             }
         }
