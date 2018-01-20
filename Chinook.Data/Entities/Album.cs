@@ -26,7 +26,7 @@ namespace Chinook.Data.Entities
         public int ReleaseYear { get; set; }
 
         [StringLength(50, ErrorMessage = "Release Label has a maximum of 160 characters")] //ErrorMsg will pop up in the user control
-        public int ReleaseLabel { get; set; }
+        public string ReleaseLabel { get; set; }
 
         //navigational properties
         public virtual Artist Artist { get; set;}            //The Artist is Singular here, the parent is Singular, not a collection

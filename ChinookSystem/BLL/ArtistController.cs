@@ -37,5 +37,8 @@ namespace ChinookSystem.BLL
                 return context.Artists.Find(artistid); //this is an extension of a collection.
             }
         }
+
+      
+
     }
 }
