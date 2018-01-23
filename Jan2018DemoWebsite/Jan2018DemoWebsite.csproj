@@ -239,6 +239,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="SamplePages\ODSCRUD.aspx" />
+    <Content Include="SamplePages\ODSQuery.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -440,6 +441,13 @@
     </Compile>
     <Compile Include="SamplePages\ODSCRUD.aspx.designer.cs">
       <DependentUpon>ODSCRUD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\ODSQuery.aspx.cs">
+      <DependentUpon>ODSQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ODSQuery.aspx.designer.cs">
+      <DependentUpon>ODSQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
