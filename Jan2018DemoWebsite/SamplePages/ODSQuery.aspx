@@ -13,7 +13,7 @@
                 <asp:TemplateField HeaderText="Id" SortExpression="AlbumId">
                     <%--can change all the bind to eval, and doest matter--%>
                     <ItemTemplate>
-                        <asp:Label runat="server" Text='<%# Bind("AlbumId") %>' ID="Label1"></asp:Label>&nbsp;&nbsp;&nbsp;
+                        <asp:Label runat="server" Text='<%# Bind("AlbumId") %>' ID="AlbumId"></asp:Label>&nbsp;&nbsp;&nbsp;
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Title" SortExpression="Title">

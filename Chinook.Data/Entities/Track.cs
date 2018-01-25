@@ -36,7 +36,7 @@ namespace Chinook.Data.Entities
 
         public int? Bytes { get; set; }
 
-        public decimal ReleaseLabel { get; set; }
+        public decimal UnitPrice { get; set; }
 
         //Navigational properties
         public virtual Album Album { get; set; }
