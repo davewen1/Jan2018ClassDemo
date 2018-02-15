@@ -48,13 +48,16 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Chinook</a>
                 </div>
+               
+
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/SamplePages/ODSCRUD.aspx">ODS CRUD</a></li>
                         <li><a runat="server" href="~/SamplePages/ODSQuery.aspx">ODS Query</a></li>
                         <li><a runat="server" href="~/SamplePages/AlbumDetails.aspx">ListView</a></li>
-                        <li><a runat="server" href="~/SamplePages/ODSRepeater.aspx">ODS Repeater</a></li>
+                        <li><a runat="server" href="~/SamplePages/ODSRepeater.aspx">Repeater Repeater</a></li>
+                        <li><a runat="server" href="~/SamplePages/EmployeeClientSupport.aspx">RepeaterGVLV</a></li>                        
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>

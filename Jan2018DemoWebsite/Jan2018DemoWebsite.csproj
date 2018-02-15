@@ -239,6 +239,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="SamplePages\AlbumDetails.aspx" />
+    <Content Include="SamplePages\EmployeeClientSupport.aspx" />
     <Content Include="SamplePages\ODSCRUD.aspx" />
     <Content Include="SamplePages\ODSQuery.aspx" />
     <Content Include="SamplePages\ODSRepeater.aspx" />
@@ -445,6 +446,13 @@
     </Compile>
     <Compile Include="SamplePages\AlbumDetails.aspx.designer.cs">
       <DependentUpon>AlbumDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\EmployeeClientSupport.aspx.cs">
+      <DependentUpon>EmployeeClientSupport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\EmployeeClientSupport.aspx.designer.cs">
+      <DependentUpon>EmployeeClientSupport.aspx</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\ODSCRUD.aspx.cs">
       <DependentUpon>ODSCRUD.aspx</DependentUpon>
