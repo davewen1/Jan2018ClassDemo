@@ -13,5 +13,13 @@ namespace Jan2018DemoWebsite.SamplePages
         {
 
         }
+
+        protected void DisplayClientPlaylists_Click(object sender, EventArgs e)
+        {
+            if (!Page.IsValid)
+            {
+                messageLabel.Text = "error message";
+            }
+        }
     }
 }

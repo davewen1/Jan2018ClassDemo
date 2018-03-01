@@ -24,8 +24,8 @@
     <asp:TextBox ID="TrackCountLimit" runat="server"
         TextMode="Number"></asp:TextBox> &nbsp;
 
-    <asp:Button ID="DisplayClientPlaylists" runat="server" Text="Display Client Playlists" class="btn btn-primary" />
-
+    <asp:Button ID="DisplayClientPlaylists" runat="server" Text="Display Client Playlists" Cssclass="btn btn-primary" OnClick="DisplayClientPlaylists_Click" />
+    <br /><asp:Label ID="messageLabel" runat="server" ></asp:Label>
     <br />
 
     <asp:Repeater ID="ClientPlaylist" runat="server" 

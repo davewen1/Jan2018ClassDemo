@@ -67,8 +67,11 @@
     <Compile Include="Entities\Track.cs" />
     <Compile Include="POCOs\ArtistAlbumCounts.cs" />
     <Compile Include="POCOs\ClientInfo.cs" />
+    <Compile Include="POCOs\SelectionList.cs" />
     <Compile Include="POCOs\TrackInfo.cs" />
+    <Compile Include="POCOs\TrackList.cs" />
     <Compile Include="POCOs\TracksAndGenre.cs" />
+    <Compile Include="POCOs\UserPlaylistTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

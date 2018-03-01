@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Chinook.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel;
+using Chinook.Data.POCOs;
 #endregion
 
 namespace ChinookSystem.BLL
@@ -49,5 +50,18 @@ namespace ChinookSystem.BLL
                 return context.Tracks.Where(x => x.AlbumId == albumid).Select( x=> x).ToList();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<TrackList> List_TracksForPlaylistSelection(string tracksby, int argid)
+        {
+            using (var context = new ChinookContext())
+            {
+                List<TrackList> results = null;
+
+                //code to go here
+
+                return results;
+            }
+        }//eom
     }
 }

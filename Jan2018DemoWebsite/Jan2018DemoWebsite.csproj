@@ -239,8 +239,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="SamplePages\AlbumDetails.aspx" />
-    <Content Include="SamplePages\AlbumTrackListExe01.aspx" />
     <Content Include="SamplePages\EmployeeClientSupport.aspx" />
+    <Content Include="SamplePages\ManagePlaylist.aspx" />
     <Content Include="SamplePages\ODSCRUD.aspx" />
     <Content Include="SamplePages\ODSQuery.aspx" />
     <Content Include="SamplePages\ODSRepeater.aspx" />
@@ -285,6 +285,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\MessageUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -448,19 +449,19 @@
     <Compile Include="SamplePages\AlbumDetails.aspx.designer.cs">
       <DependentUpon>AlbumDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SamplePages\AlbumTrackListExe01.aspx.cs">
-      <DependentUpon>AlbumTrackListExe01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SamplePages\AlbumTrackListExe01.aspx.designer.cs">
-      <DependentUpon>AlbumTrackListExe01.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SamplePages\EmployeeClientSupport.aspx.cs">
       <DependentUpon>EmployeeClientSupport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SamplePages\EmployeeClientSupport.aspx.designer.cs">
       <DependentUpon>EmployeeClientSupport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\ManagePlaylist.aspx.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ManagePlaylist.aspx.designer.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\ODSCRUD.aspx.cs">
       <DependentUpon>ODSCRUD.aspx</DependentUpon>
@@ -498,6 +499,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\MessageUserControl.ascx.cs">
+      <DependentUpon>MessageUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MessageUserControl.ascx.designer.cs">
+      <DependentUpon>MessageUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
