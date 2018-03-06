@@ -12,7 +12,6 @@
     <div class="row">
         <div class="col-sm-12">
             <uc1:MessageUserControl runat="server" id="MessageUserControl" />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         </div>
     </div>
    

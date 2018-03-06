@@ -56,11 +56,30 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-                List<TrackList> results = null;
+                //List<TrackList> results = null; this was a temperaury line of code...
 
-                //code to go here
+                var results = from x in context.Tracks
+                                  // remember passed by 2 varibles, 1 str tracksby, 1 int argid
+                              where tracksby.Equals("Artist") ? x.Album.ArtistId == argid :
+                                    tracksby.Equals("Mediatype") ? x.MediaTypeId == argid :
+                                    tracksby.Equals("Genre") ? x.GenreId == argid :
+                                    x.AlbumId == argid
+                              orderby x.Name
+                              select new TrackList
+                              {
+                                  TrackID = x.TrackId,
+                                  Name = x.Name,
+                                  Title = x.Album.Title,
+                                  MediaName = x.MediaType.Name,
+                                  GenreName = x.Genre.Name,
+                                  Composer = x.Composer,
+                                  Milliseconds = x.Milliseconds,
+                                  Bytes = x.Bytes,
+                                  UnitPrice = x.UnitPrice
+                              };
 
-                return results;
+
+                return results.ToList();
             }
         }//eom
     }

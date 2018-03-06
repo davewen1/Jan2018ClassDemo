@@ -23,24 +23,43 @@ namespace Jan2018DemoWebsite.SamplePages
 
         protected void ArtistFetch_Click(object sender, EventArgs e)
         {
-
-            //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                TracksBy.Text = "Artist";
+                SearchArgID.Text = ArtistDDL.SelectedValue;
+                TracksSelectionList.DataBind();
+            }, "Tracks by Artist", "Add an Artist Track to your playlist by clicking on the + (plus sign).");
 
         }
 
         protected void MediaTypeFetch_Click(object sender, EventArgs e)
         {
-            //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                TracksBy.Text = "Mediatype";
+                SearchArgID.Text = MediaTypeDDL.SelectedValue;
+                TracksSelectionList.DataBind();
+            }, "Tracks by Mediatype", "Add an Mediatype Track to your playlist by clicking on the + (plus sign).");
         }
 
         protected void GenreFetch_Click(object sender, EventArgs e)
         {
-            //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                TracksBy.Text = "Genre";
+                SearchArgID.Text = GenreDDL.SelectedValue;
+                TracksSelectionList.DataBind();
+            }, "Tracks by Genre", "Add an Genre Track to your playlist by clicking on the + (plus sign).");
         }
 
         protected void AlbumFetch_Click(object sender, EventArgs e)
         {
-            //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                TracksBy.Text = "Album";
+                SearchArgID.Text = AlbumDDL.SelectedValue;
+                TracksSelectionList.DataBind();
+            }, "Album by Genre", "Add an Album Track to your playlist by clicking on the + (plus sign).");
         }
 
         protected void PlayListFetch_Click(object sender, EventArgs e)
