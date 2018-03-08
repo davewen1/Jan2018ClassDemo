@@ -85,8 +85,38 @@ namespace Jan2018DemoWebsite.SamplePages
 
         protected void TracksSelectionList_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            //code to go here
-           
+            //this method will only execute if the user has pressed the plus sign on a visible row from the display.
+
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                MessageUserControl.ShowInfo("PlayList Name", "You must supply a playlist name,");
+            }
+           else
+            {
+                //via security one can obtain the username
+                string username = "HansenB";
+                string playlistname = PlaylistName.Text;
+
+                //the trackid is attached to each ListView row via the CommandArgument parameter.
+                //Access to the trackid is done via the "ListViewCommandEventArgs e" parameter
+                //The e parameter is treated as an aboject
+                //Some e parameter need to be cast as strings
+                int trackid = int.Parse(e.CommandArgument.ToString());
+
+                //all required data can now be sent to the BLL for further processing
+
+                //user friednly error handling
+                MessageUserControl.TryRun(() =>
+                {
+                    //connect to your BLL
+                    PlaylistTracksController sysmgr = new PlaylistTracksController();
+                    sysmgr.Add_TrackToPLaylist(playlistname, username, trackid);
+                    //code to retreive the up to date playlist and tracks for refreshing the playlist track list
+
+                }, "Tracked Added", "The track as been added, check your list below");
+
+
+            }
         }
 
     }
