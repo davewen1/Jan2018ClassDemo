@@ -115,7 +115,7 @@ namespace Jan2018DemoWebsite.SamplePages
                         if (playlistselection.Checked)
                         {
                             trackid = int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text); //the inner most is a pointer, then text, then to int. 
-                            tracknumber = int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text);
+                            tracknumber = int.Parse((PlayList.Rows[rowindex].FindControl("TrackNumber") as Label).Text);
                             rowselected++; //counter for number of checked items (rule says only one item can be moved)
                         }
                     } // endoftheforloop
@@ -168,7 +168,7 @@ namespace Jan2018DemoWebsite.SamplePages
                         if(playlistselection.Checked)
                         {                        
                             trackid = int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text); //the inner most is a pointer, then text, then to int. 
-                            tracknumber = int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text);
+                            tracknumber = int.Parse((PlayList.Rows[rowindex].FindControl("TrackNumber") as Label).Text);
                             rowselected++; //counter for number of checked items (rule says only one item can be moved)
                         }
                     } // endoftheforloop
@@ -209,6 +209,52 @@ namespace Jan2018DemoWebsite.SamplePages
         protected void DeleteTrack_Click(object sender, EventArgs e)
         {
             //code to go here
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                MessageUserControl.ShowInfo("Enter a play list name");
+            }
+            else
+            {
+                if (PlayList.Rows.Count == 0)
+                {
+                    MessageUserControl.ShowInfo("Playlist has no tracks to delete");
+                }
+                else
+                {
+                    //gather all selected rows
+                    List<int> trackstodelete = new List<int>(); //all i need is the trackids, no need to know the track numbers.
+                    int rowselected = 0;
+                    CheckBox playlistselection = null;
+                    for (int rowindex = 0; rowindex < PlayList.Rows.Count; rowindex++)
+                    {
+                        playlistselection = PlayList.Rows[rowindex].FindControl("Selected") as CheckBox;
+                        if (playlistselection.Checked)
+                        {
+                            rowselected++;
+                            trackstodelete.Add(int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text));
+                        }
+                    }
+                        //was at least one track selected
+                        if (rowselected == 0)
+                        {
+                            MessageUserControl.ShowInfo("Warning", "You must select at least one track to delete");
+                        }
+                        else
+                        {
+                            //send the list of tracks to the BLL to delete
+                            MessageUserControl.TryRun(() =>
+                            {
+                                PlaylistTracksController sysmgr = new PlaylistTracksController();
+                                sysmgr.DeleteTracks("HansenB", PlaylistName.Text, trackstodelete);
+                                List<UserPlaylistTrack> info = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                                PlayList.DataSource = info;
+                                PlayList.DataBind();
+                            },"Removed","Tracks have been removed");
+                            
+                        }
+                    
+                }
+            }
         }
 
         protected void TracksSelectionList_ItemCommand(object sender, ListViewCommandEventArgs e)
