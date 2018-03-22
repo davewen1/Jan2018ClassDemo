@@ -284,6 +284,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Security\UserRoleAdmin.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserControls\MessageUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -483,6 +484,13 @@
     </Compile>
     <Compile Include="SamplePages\ODSRepeater.aspx.designer.cs">
       <DependentUpon>ODSRepeater.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserRoleAdmin.aspx.cs">
+      <DependentUpon>UserRoleAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\UserRoleAdmin.aspx.designer.cs">
+      <DependentUpon>UserRoleAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

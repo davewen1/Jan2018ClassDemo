@@ -15,6 +15,9 @@ using AppSecurity.DAL;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ChinookSystem.DAL;
 using AppSecurity.POCOs;
+using System.ComponentModel;
+using Chinook.Data.Entities;
+using ChinookSystem.BLL;
 #endregion
 
 
@@ -23,7 +26,7 @@ using AppSecurity.POCOs;
 
 namespace AppSecurity.BLL
 {
-
+    [DataObject]
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
@@ -217,7 +220,116 @@ namespace AppSecurity.BLL
             return verifiedUserName;
         }
 
+        #region UserRole Adminstration
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<UserProfile> ListAllUsers()
+        {
+            //used on the admin page user panel to load ListView
+            //Users.ToList() brings Users data from security tables
+            //    into memory for use by linq query
+            //EmployeeID and CustomerID were added to the Users table data
+            //    in ApplicationUser entity
+            //these values will be used in using() to get names from
+            //    the Chinook database
+            var rm = new ApplicationRoleManager();
+            List<UserProfile> results = new List<UserProfile>();
+            var tempresults = from person in Users.ToList()
+                              select new UserProfile
+                              {
+                                  UserId = person.Id,
+                                  UserName = person.UserName,
+                                  Email = person.Email,
+                                  EmailConfirmation = person.EmailConfirmed,
+                                  EmployeeId = person.EmployeeID,
+                                  CustomerId = person.CustomerID,
+                                  RoleMemberships = person.Roles.Select(r => rm.FindById(r.RoleId).Name)
+                              };
+            //get any user first and last names
+            using (var context = new ChinookContext())
+            {
+                Employee tempEmployee;
+                foreach (var person in tempresults)
+                {
+                    if (person.EmployeeId.HasValue)
+                    {
+                        tempEmployee = context.Employees.Find(person.EmployeeId);
+                        if (tempEmployee != null)
+                        {
+                            person.FirstName = tempEmployee.FirstName;
+                            person.LastName = tempEmployee.LastName;
+                        }
+                    }
+                    results.Add(person);
+                }
+            }
+            return results.ToList();
+        }
 
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void AddUser(UserProfile userinfo)
+        {
+            if (string.IsNullOrEmpty(userinfo.EmployeeId.ToString()))
+            {
+                throw new Exception("Employee ID is missing. Remember Employee must be on file to get an user account.");
+
+            }
+            else
+            {
+                EmployeeController sysmgr = new EmployeeController();
+                Employee existing = sysmgr.Employee_Get(int.Parse(userinfo.EmployeeId.ToString()));
+                if (existing == null)
+                {
+                    throw new Exception("Employee must be on file to get an user account.");
+                }
+                else
+                {
+                    // create and load a new instance of the ApplicationUser entity which
+                    //      is used to create a new user account
+                    var userAccount = new ApplicationUser()
+                    {
+                        EmployeeID = userinfo.EmployeeId,
+                        CustomerID = userinfo.CustomerId,
+                        UserName = userinfo.UserName,
+                        Email = userinfo.Email
+                    };
+                    //using the ApplicationUser instance, create a new user
+                    //      account
+                    //the result will be successful if the user account username
+                    //      is unique to the user table
+                    IdentityResult result = this.Create(userAccount,
+                        string.IsNullOrEmpty(userinfo.RequestedPassord) ? STR_DEFAULT_PASSWORD
+                        : userinfo.RequestedPassord);
+                    if (!result.Succeeded)
+                    {
+                        //name was already in use
+                        //get a UserName that is not already on the Users Table
+                        //the method will suggest an alternate UserName
+                        userAccount.UserName = VerifyNewUserName(userinfo.UserName);
+                        this.Create(userAccount, STR_DEFAULT_PASSWORD);
+                    }
+                    //the RoleMemberships collection is a list of all selected roles
+                    //     from the admin page.
+                    //create a new UserRole reccord for each role.
+                    foreach (var roleName in userinfo.RoleMemberships)
+                    {
+                        //this.AddToRole(userAccount.Id, roleName);
+                        AddUserToRole(userAccount, roleName);
+                    }
+                }
+            }
+        }
+
+        public void AddUserToRole(ApplicationUser userAccount, string roleName)
+        {
+            this.AddToRole(userAccount.Id, roleName);
+        }
+
+
+        public void RemoveUser(UserProfile userinfo)
+        {
+            this.Delete(this.FindById(userinfo.UserId));
+        }
+        #endregion
 
     }
 }

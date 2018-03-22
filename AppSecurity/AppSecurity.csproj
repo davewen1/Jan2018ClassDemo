@@ -94,6 +94,9 @@
     <Compile Include="Entities\SecurityRules.cs" />
     <Compile Include="POCOs\EmployeeListPOCO.cs" />
     <Compile Include="POCOs\RegisteredEmployeePOCO.cs" />
+    <Compile Include="POCOs\RoleName.cs" />
+    <Compile Include="POCOs\RoleProfile.cs" />
+    <Compile Include="POCOs\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
