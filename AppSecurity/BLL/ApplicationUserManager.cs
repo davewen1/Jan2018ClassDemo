@@ -18,6 +18,7 @@ using AppSecurity.POCOs;
 using System.ComponentModel;
 using Chinook.Data.Entities;
 using ChinookSystem.BLL;
+using Chinook.Data.POCOs;
 #endregion
 
 
@@ -330,6 +331,56 @@ namespace AppSecurity.BLL
             this.Delete(this.FindById(userinfo.UserId));
         }
         #endregion
+
+        #region Auxiluary Methods
+        public EmployeeInfo User_GetEmployee(string username)
+        {
+            //get the employeeid off the ApplicationUser record
+            //the Application user record represents an instance from the SQL security table AspNetUsers
+            //this will retreive a single value or the default null
+
+            var employeeid = (from person in Users.ToList()
+                              where person.UserName.Equals(username)
+                              select person.EmployeeID).SingleOrDefault();  //single filed uses singleordefault, firstordefault is for the entire record
+            //was the record of a user
+            if (employeeid == null)
+            {
+                throw new Exception("Not a registered user member");
+            }
+            else
+            {
+                //get the employee info
+                EmployeeInfo employeeinfo = null;
+                //connect to Chinook context class,  not the security class, the Chinook class for DbSet<Employee>
+                using (var context = new ChinookContext())
+                {
+                    //lookup employee record
+                    //The value that was retreieved during the first linq query is a system.Object
+                    //This System.Object has to be cast into a string , if getting error message "Cannot compair system object"
+                    //Put .ToString()
+                    employeeinfo = (from emp in context.Employees
+                                    where emp.EmployeeId.ToString().Equals(employeeid.ToString())
+                                    select new EmployeeInfo
+                                    {
+                                        EmployeeID = emp.EmployeeId,
+                                        FirstName = emp.FirstName,
+                                        LastName = emp.LastName
+                                    }).FirstOrDefault();
+                
+                    if (employeeinfo == null)
+                    {
+                        throw new Exception("Not an employee");
+                    }
+               }
+
+               return employeeinfo;
+            }
+            
+
+        }
+
+        #endregion
+
 
     }
 }
