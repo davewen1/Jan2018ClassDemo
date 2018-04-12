@@ -46,12 +46,12 @@
       <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -83,10 +83,20 @@
     <Compile Include="DAL\ChinookContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.AlbumController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.AlbumTrackListLINQController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.ArtistController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.EmployeeController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.GenreController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.MediaTypeController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.PlaylistController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.PlaylistTracksController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.BLL.TrackController.datasource" />
+    <None Include="Properties\DataSources\ChinookSystem.DAL.ChinookContext.datasource" />
+    <None Include="Properties\DataSources\DMIT2018Common.UserControls.BusinessRuleException.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chinook.Data\Chinook.Data.csproj">
@@ -94,6 +104,7 @@
       <Name>Chinook.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

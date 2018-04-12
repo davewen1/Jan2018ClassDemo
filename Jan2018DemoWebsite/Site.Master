@@ -59,7 +59,9 @@
                         <li><a runat="server" href="~/SamplePages/ODSRepeater.aspx">Repeater Repeater</a></li>
                         <li><a runat="server" href="~/SamplePages/EmployeeClientSupport.aspx">RepeaterGVLV</a></li>                           
                         <li><a runat="server" href="~/SamplePages/ManagePlaylist.aspx">OLTP</a></li>
-                        <li><a runat="server" href="~/Security/UserRoleAdmin">UserRoleAdmin</a></li>                   
+                        <li><a runat="server" href="~/SamplePages/GenreAlbumReport.aspx">Report</a></li>
+                        <li><a runat="server" href="~/Security/UserRoleAdmin">UserRoleAdmin</a></li>  
+                                         
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
